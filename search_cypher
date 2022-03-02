@@ -29,4 +29,4 @@ ORDER BY score DESC, name ASC
 CALL gds.betweenness.stream('red_ferroviaria')
 YIELD nodeId, score
 RETURN gds.util.asNode(nodeId).name AS name, score
-ORDER BY score ASC
+ORDER BY score DESC, name ASC
