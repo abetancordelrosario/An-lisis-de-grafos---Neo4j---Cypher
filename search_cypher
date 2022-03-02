@@ -1,0 +1,32 @@
+//Dijkstra shortest path
+MATCH (c1:Ciudad { name: 'Málaga'})
+MATCH (c2:Ciudad { name: 'Girona'})
+CALL apoc.algo.dijkstra(c1, c2, 'Conección', 'tiempo') YIELD path, weight
+RETURN path, weight
+
+----------------------------------------------------------------------------------
+
+//PageRank
+CALL gds.pageRank.stream('red_ferroviaria')
+YIELD nodeId, score
+RETURN gds.util.asNode(nodeId).name AS name, score
+ORDER BY score DESC, name ASC
+
+
+----------------------------------------------------------------------------------
+
+//Eigenvector Centrality
+CALL gds.eigenvector.stream('red_ferroviaria')
+YIELD nodeId, score
+RETURN gds.util.asNode(nodeId).name AS name, score
+ORDER BY score DESC, name ASC
+
+
+----------------------------------------------------------------------------------
+
+
+//Betweenness
+CALL gds.betweenness.stream('red_ferroviaria')
+YIELD nodeId, score
+RETURN gds.util.asNode(nodeId).name AS name, score
+ORDER BY score ASC

@@ -1,0 +1,8 @@
+CALL gds.graph.create(
+  'red_ferroviaria',
+  'Ciudad',
+  'Conección',
+  {
+    relationshipProperties: 'tiempo'
+  }
+)
